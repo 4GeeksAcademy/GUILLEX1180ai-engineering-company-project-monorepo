@@ -41,6 +41,12 @@
   "js": "corepack enable && corepack prepare pnpm@latest --activate && if [ -f package.json ]; then pnpm install; fi",
   "python": "python -m pip install --upgrade pip uv && if [ -f pyproject.toml ]; then uv sync && uv cache clean; fi"
   },
-  "forwardPorts": [3000, 8000, 5678],
+  "forwardPorts": [3000, 5173, 8000, 5678],
+  "portsAttributes": {
+    "5173": {
+      "label": "TrackFlow Vite",
+      "onAutoForward": "openBrowser"
+    }
+  },
   "remoteUser": "vscode"
 }
