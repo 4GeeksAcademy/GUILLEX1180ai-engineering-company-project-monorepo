@@ -21,7 +21,7 @@ if (form) {
   const messages = {
     company: 'El nombre de la empresa debe tener al menos 2 caracteres',
     contact: 'Ingresa nombre y apellido del contacto',
-    email: 'Ingresa un email corporativo válido (ejemplo: nombre@empresa.com)',
+    email: 'Ingresa un email corporativo válido (ejemplo: <nombre@empresa.com>)',
     phone: 'El teléfono debe incluir código de país (ejemplo: +1 213 555 0147)',
     website: 'Si incluyes sitio web, debe ser una URL válida',
     country: 'Selecciona el país de operación principal',
