@@ -33,6 +33,7 @@
 2. Implementar las validaciones en `./uis/website` con los mensajes exactos del briefing.
 3. Integración del marcado Schema.org `Organization` (JSON-LD).
 4. Pruebas de envío del formulario (simulación) y verificación con la skill `validate-landing-form`.
+5. **Despliegue en línea:** configurado workflow de GitHub Pages en `.github/workflows/deploy.yml` + `base: './'` en `vite.config.js`; activar Pages en `Settings → Pages` y hacer push a `main` para publicar.
 
 ## Registro de avances
 
