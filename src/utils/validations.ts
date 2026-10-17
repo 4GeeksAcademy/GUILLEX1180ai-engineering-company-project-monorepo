@@ -28,12 +28,11 @@ import {
   VOLUME_RANGES,
 } from '../types/models';
 
-/** Longitud mínima del nombre de empresa (CONTEXT.es.md: "Mínimo 2 caracteres"). */
-const MIN_COMPANY_LENGTH: number = 2;
-/** Cantidad mínima de palabras para el contacto (nombre y apellido). */
-const MIN_CONTACT_WORDS: number = 2;
 /** Longitud máxima de comentarios (CONTEXT.es.md: "Máximo 500 caracteres"). */
-const MAX_COMMENTS_LENGTH: number = 500;
+export const MAX_COMMENTS_LENGTH: number = 500;
+
+const MIN_COMPANY_LENGTH: number = 2;
+const MIN_CONTACT_WORDS: number = 2;
 /** Rango de volumen que dispara la advertencia de eficiencia. */
 const LOW_VOLUME_RANGE: VolumeRange = '0-100';
 
@@ -56,32 +55,27 @@ const ERROR_MESSAGES = {
 const LOW_VOLUME_WARNING: string =
   'Para volúmenes menores a 100 envíos mensuales, nuestros servicios podrían no ser la solución más eficiente. ¿Seguro que quieres continuar?';
 
-/** Normaliza un valor opcional a una cadena sin espacios extremos. */
 function normalize(value: string | undefined): string {
   return value?.trim() ?? '';
 }
 
-/** Comprueba que la empresa tenga al menos 2 caracteres. */
 function isValidCompany(company: string | undefined): boolean {
   return normalize(company).length >= MIN_COMPANY_LENGTH;
 }
 
-/** Comprueba que el contacto tenga al menos 2 palabras (nombre y apellido). */
 function isValidContact(contact: string | undefined): boolean {
   return normalize(contact).split(/\s+/).filter(Boolean).length >= MIN_CONTACT_WORDS;
 }
 
-/** Comprueba el formato básico de email (presencia de @ y dominio). */
 function isValidEmail(email: string | undefined): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalize(email));
 }
 
-/** Comprueba que el teléfono comience con `+` seguido del código de país. */
 function isValidPhone(phone: string | undefined): boolean {
   return /^\+\d{1,3}(?:[ -]?\d){7,14}$/.test(normalize(phone));
 }
 
-/** Comprueba que el sitio web (opcional) sea una URL http(s) válida. */
+/** El sitio web es opcional; si se incluye, debe ser una URL http(s) válida. */
 function isValidWebsite(website: string | undefined): boolean {
   const value = normalize(website);
   if (value === '') {
@@ -95,26 +89,22 @@ function isValidWebsite(website: string | undefined): boolean {
   }
 }
 
-/** Comprueba que el valor exista y sea un miembro del conjunto permitido. */
 function isValidEnumValue<T extends string>(value: T | undefined, allowed: readonly T[]): boolean {
   return value !== undefined && allowed.includes(value);
 }
 
-/** Comprueba que haya al menos un servicio de interés seleccionado. */
 function hasSelectedServices(services: ServiceType[] | undefined): boolean {
   return Array.isArray(services) && services.length > 0;
 }
 
-/** Comprueba que los comentarios no excedan 500 caracteres. */
 function hasValidCommentsLength(comments: string | undefined): boolean {
   return comments === undefined || comments.length <= MAX_COMMENTS_LENGTH;
 }
 
 /**
  * Valida un Lead (parcial) contra las reglas de negocio de TrackFlow.
- *
- * @param lead Objeto de tipo `Partial<Lead>` a validar.
- * @returns `isValid` (true si no hay errores) y `errors` (mensajes exactos de CONTEXT.es.md).
+ * Devuelve `isValid` (true si no hay errores) y `errors` con los mensajes
+ * exactos de CONTEXT.es.md.
  */
 export function validateLeadData(lead: Partial<Lead>): { isValid: boolean; errors: string[] } {
   const errors: string[] = [];
@@ -163,13 +153,7 @@ export function validateLeadData(lead: Partial<Lead>): { isValid: boolean; error
 /**
  * Devuelve la advertencia de eficiencia cuando el volumen mensual estimado
  * es "0-100 envíos/mes" (restricción específica de CONTEXT.es.md).
- *
- * @param volume Volumen mensual estimado (string opcional).
- * @returns El mensaje de advertencia, o `null` si el volumen es adecuado.
  */
 export function checkVolumeEfficiency(volume?: string): string | null {
   return volume === LOW_VOLUME_RANGE ? LOW_VOLUME_WARNING : null;
 }
-
-// Re-export útil para la demo: longitud máxima de comentarios.
-export { ERROR_MESSAGES as LEAD_ERROR_MESSAGES, MAX_COMMENTS_LENGTH };

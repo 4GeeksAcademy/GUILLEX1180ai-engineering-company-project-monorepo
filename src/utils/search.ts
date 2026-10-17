@@ -1,34 +1,14 @@
 /**
- * search.ts — Búsqueda lineal y búsqueda binaria sobre colecciones.
- * ------------------------------------------------------------
+ * search.ts — Búsqueda lineal (O(n)) y binaria (O(log n)).
+ * --------------------------------------------------------------------
  * - `linearSearch`: para arrays sin orden previo, O(n).
  * - `binarySearch`: para arrays previamente ordenados por `key`, O(log n).
+ *   Devuelve `null` explícito si el elemento no se encuentra.
  */
 
-/**
- * Comparación genérica para valores de una propiedad.
- * - strings: comparación lexicográfica.
- * - numbers: resta numérica.
- * - booleanos / otros: false (0) < true (1).
- */
-function compareValues(a: unknown, b: unknown): number {
-  if (typeof a === 'string' && typeof b === 'string') {
-    return a.localeCompare(b);
-  }
-  if (typeof a === 'number' && typeof b === 'number') {
-    return a - b;
-  }
-  return Number(Boolean(a)) - Number(Boolean(b));
-}
+import { compareValues } from './comparators';
 
-/**
- * Busca linealmente (O(n)) el primer elemento que cumpla el predicado.
- * Adecuado para colecciones desordenadas.
- *
- * @param collection Colección a recorrer.
- * @param predicate Función de prueba por elemento.
- * @returns El primer elemento que cumple el predicado o `null` si no existe.
- */
+/** Busca linealmente el primer elemento que cumple el predicado. */
 export function linearSearch<T>(
   collection: readonly T[],
   predicate: (item: T) => boolean,
@@ -41,15 +21,7 @@ export function linearSearch<T>(
   return null;
 }
 
-/**
- * Busca binariamente (O(log n)) un elemento en una colección que YA está
- * ordenada de forma ascendente por la propiedad `key`.
- *
- * @param sortedCollection Colección ordenada ascendentemente por `key`.
- * @param key Propiedad por la que la colección está ordenada.
- * @param targetValue Valor buscado de la propiedad `key`.
- * @returns El elemento encontrado o `null` si no existe.
- */
+/** Busca binariamente un elemento en una colección ordenada ascendentemente por `key`. */
 export function binarySearch<T, K extends keyof T>(
   sortedCollection: readonly T[],
   key: K,
