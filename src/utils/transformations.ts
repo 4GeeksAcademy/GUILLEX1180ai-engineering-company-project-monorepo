@@ -1,31 +1,13 @@
 /**
- * transformations.ts — Agregaciones, conteos por categoría, sumas,
- * promedios y extremos (min/máx) sobre colecciones.
+ * transformations.ts — Agregaciones, conteos, sumas, promedios y extremos.
+ * ------------------------------------------------------------------------
+ * Todas las funciones tratan colecciones vacías de forma explícita:
+ * sumas = 0, promedios = 0 (evita NaN) y extremos = { min: null, max: null }.
  */
 
-/**
- * Comparación genérica de valores para localizar extremos.
- * - strings: comparación lexicográfica.
- * - numbers: resta numérica.
- * - booleanos / otros: false (0) < true (1).
- */
-function compareValues(a: unknown, b: unknown): number {
-  if (typeof a === 'string' && typeof b === 'string') {
-    return a.localeCompare(b);
-  }
-  if (typeof a === 'number' && typeof b === 'number') {
-    return a - b;
-  }
-  return Number(Boolean(a)) - Number(Boolean(b));
-}
+import { compareValues } from './comparators';
 
-/**
- * Cuenta cuántos elementos de la colección comparten cada valor de `key`.
- *
- * @param collection Colección a analizar.
- * @param key Propiedad por la que categorizar.
- * @returns Objeto con los conteos por categoría.
- */
+/** Cuenta cuántos elementos comparten cada valor de `key`. */
 export function countByCategory<T, K extends keyof T>(
   collection: readonly T[],
   key: K,
@@ -37,14 +19,7 @@ export function countByCategory<T, K extends keyof T>(
   }, {});
 }
 
-/**
- * Suma los valores numéricos de la propiedad `key`.
- * Los valores no numéricos se ignoran (se tratan como 0).
- *
- * @param collection Colección a analizar.
- * @param key Propiedad numérica a sumar.
- * @returns Suma total.
- */
+/** Suma los valores numéricos de `key` (los no numéricos se tratan como 0). */
 export function sumByProperty<T>(collection: readonly T[], key: keyof T): number {
   return collection.reduce((total, item) => {
     const value = item[key];
@@ -52,13 +27,7 @@ export function sumByProperty<T>(collection: readonly T[], key: keyof T): number
   }, 0);
 }
 
-/**
- * Calcula el promedio aritmético de la propiedad `key`.
- *
- * @param collection Colección a analizar.
- * @param key Propiedad numérica a promediar.
- * @returns Promedio (0 si la colección está vacía).
- */
+/** Promedio aritmético de `key`; devuelve 0 si la colección está vacía (evita NaN). */
 export function calculateAverage<T>(collection: readonly T[], key: keyof T): number {
   if (collection.length === 0) {
     return 0;
@@ -66,14 +35,7 @@ export function calculateAverage<T>(collection: readonly T[], key: keyof T): num
   return sumByProperty(collection, key) / collection.length;
 }
 
-/**
- * Localiza el elemento con el valor mínimo y el elemento con el valor
- * máximo de la propiedad `key`.
- *
- * @param collection Colección a analizar.
- * @param key Propiedad sobre la que hallar los extremos.
- * @returns Objeto con `min` y `max` (ambos `null` si la colección está vacía).
- */
+/** Localiza el elemento con el valor mínimo y el máximo de `key`. */
 export function findMinMax<T>(
   collection: readonly T[],
   key: keyof T,
