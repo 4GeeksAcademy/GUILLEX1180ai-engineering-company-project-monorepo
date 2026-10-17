@@ -5,11 +5,13 @@
 
 ## Estado actual
 
-**Fase de configuración de infraestructura de agentes y mapa del monorepo (Hito 0/1).**
+**✅ Completado: Configuración de Infraestructura de Agentes y Setup del Monorepo (Hito 0/1).**
 
 - [x] Inicializado el banco de memoria (`./memory-bank/`): `projectbrief.md`, `techContext.md`, `progress.md`.
 - [x] Protocolo de agentes (`./AGENTS.md`) y estructura `.agents/` (reglas + skills).
 - [x] **Mapeo de Capa de Aplicación** documentado en `techContext.md` (`./uis/website`, `./uis/backoffice`, `/services`).
+- [x] Regla de aplicación `.agents/rules/app-structure-and-code.md` (aplicable a `./uis/**` y `/services/**`).
+- [x] Skill de validación `.agents/skills/validate-landing-form/SKILL.md`.
 - [x] Capa de dominio TypeScript (`src/types/models.ts`, `src/utils/*`) validada con `npx tsc --noEmit`.
 - [x] Hito 2 (parcialmente): interfaz de pruebas `console.html` + `src/interactive-demo.ts`.
 - [x] Sitio estático B2B (Hito 1) construido en la raíz: `index.html`, `application.html`, `validation.js`.
@@ -33,6 +35,14 @@
 4. Pruebas de envío del formulario (simulación) y verificación con la skill `validate-landing-form`.
 
 ## Registro de avances
+
+### 2026-10-17 — Verificación final del flujo de entrega (4 pasos) ✅
+
+- Ejecutada la verificación completa de los 4 pasos de `AGENTS.md` sobre la rama `feature/agent-memory-bank`.
+- **Paso 1 — Requisitos:** confirmado que todos los documentos usan la empresa real **TrackFlow** (Los Ángeles + Zaragoza, 130 empleados, ~9M€, 3 servicios: almacén, última milla, logística inversa; Hito 1 Landing/Formulario). Sin placeholders ni texto genérico.
+- **Paso 2 — Rutas:** confirmado que NO existen carpetas paralelas (`/apps`, `/frontend`, `/backend`, `/src/website`, etc.). Capa de aplicación mapeada solo en `./uis/website`, `./uis/backoffice` y `/services`.
+- **Paso 3 — Calidad:** sin archivos temporales (`.tmp`/`.bak`/`.log`), bloques de código Markdown balanceados, `npx tsc --noEmit` ✅ y `npm run build` ✅.
+- **Paso 4 — Memoria:** este registro actualiza el banco de memoria.
 
 ### 2026-10-17 — Configuración infraestructura de agentes y banco de memoria (actualización v2)
 
