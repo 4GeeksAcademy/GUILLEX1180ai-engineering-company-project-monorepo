@@ -1,3 +1,51 @@
+/* ============================================================
+   TrackFlow · Hoja de estilos institucional (Tailwind CSS)
+   Hito 1 — Sitio Web Público y Formulario de Solicitud de Info
+   ------------------------------------------------------------
+   1) Directivas de Tailwind: al compilar con la pipeline de
+      PostCSS/Vite (tailwindcss + autoprefixer en devDependencies)
+      generan el CSS de utilidades real.
+   2) Paleta institucional: los tokens de marca se definen aquí
+      como variables CSS y se reflejan en tailwind.config.js,
+      de modo que la identidad visual esté centralizada.
+   ============================================================ */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ------------------------------------------------------------
+   Paleta institucional TrackFlow
+   ------------------------------------------------------------ */
+:root {
+  --color-forest: #102d27; /* Verde bosque · color primario      */
+  --color-leaf: #22c55e;   /* Verde lima · acento / llamadas CTA */
+  --color-paper: #f8fafc;  /* Fondo claro tipo papel              */
+  --color-ink: #0f172a;    /* Tinta · texto principal             */
+  --color-coral: #f97316;  /* Coral · acento secundario           */
+  --color-muted: #64748b;  /* Texto secundario / suave            */
+}
+
+/* ------------------------------------------------------------
+   Base global y accesibilidad (WCAG 2.1 AA)
+   ------------------------------------------------------------ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  /* Respetar la preferencia de movimiento reducido */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

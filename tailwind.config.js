@@ -5,11 +5,11 @@ export default {
     extend: {
       colors: {
         forest: '#102d27',
-        leaf: '#b8e45b',
-        paper: '#f7f7f2',
-        ink: '#17221f',
-        muted: '#65716b',
-        coral: '#9b3525'
+        leaf: '#22c55e',
+        paper: '#f8fafc',
+        ink: '#0f172a',
+        coral: '#f97316',
+        muted: '#64748b'
       },
       fontFamily: {
         sans: ['DM Sans', 'sans-serif'],

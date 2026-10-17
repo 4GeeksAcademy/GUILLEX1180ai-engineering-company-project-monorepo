@@ -16,6 +16,8 @@ if (form) {
   const commentsCount = document.querySelector('#comments-count');
   const volumeWarning = document.querySelector('#volume-warning');
   const successMessage = document.querySelector('#form-success');
+
+  // Mensajes de error estandarizados (coinciden 1:1 con CONTEXT.es.md)
   const messages = {
     company: 'El nombre de la empresa debe tener al menos 2 caracteres',
     contact: 'Ingresa nombre y apellido del contacto',
@@ -54,9 +56,30 @@ if (form) {
 
   function setError(name, message) {
     const error = document.querySelector(`#${name}-error`);
-    if (error) error.textContent = message;
+    const hasError = Boolean(message);
+
+    if (error) {
+      error.textContent = message;
+    }
+
     controlsFor(name).forEach((control) => {
-      control.setAttribute('aria-invalid', String(Boolean(message)));
+      control.setAttribute('aria-invalid', String(hasError));
+
+      // Aplicar estilos visuales de Tailwind en inputs/selects/textareas
+      if (control.tagName === 'INPUT' || control.tagName === 'SELECT' || control.tagName === 'TEXTAREA') {
+        if (control.type !== 'checkbox' && control.type !== 'radio') {
+          if (hasError) {
+            control.classList.add('border-red-600', 'ring-1', 'ring-red-600');
+            control.classList.remove('border-ink/20', 'border-emerald-600', 'ring-emerald-600');
+          } else if (control.value.trim().length > 0) {
+            control.classList.add('border-emerald-600');
+            control.classList.remove('border-ink/20', 'border-red-600', 'ring-red-600');
+          } else {
+            control.classList.remove('border-red-600', 'ring-red-600', 'border-emerald-600');
+            control.classList.add('border-ink/20');
+          }
+        }
+      }
     });
   }
 
@@ -90,15 +113,19 @@ if (form) {
   }
 
   function updateCommentsCount() {
-    commentsCount.textContent = `${fields.comments.value.length}/500`;
+    if (commentsCount && fields.comments) {
+      commentsCount.textContent = `${fields.comments.value.length}/500`;
+    }
   }
 
   function updateVolumeWarning() {
-    volumeWarning.classList.toggle('hidden', fields.volume.value !== '0-100');
+    if (volumeWarning && fields.volume) {
+      volumeWarning.classList.toggle('hidden', fields.volume.value !== '0-100');
+    }
   }
 
   function validateChangedControl(event) {
-    const { name } = event.target;
+    const name = event.target.name || event.target.id;
     if (validators[name]) validateField(name);
     if (event.target === fields.comments) updateCommentsCount();
     if (event.target === fields.volume) updateVolumeWarning();
@@ -107,21 +134,27 @@ if (form) {
   form.addEventListener('input', validateChangedControl);
   form.addEventListener('change', validateChangedControl);
   form.addEventListener('focusout', (event) => {
-    const { name } = event.target;
+    const name = event.target.name || event.target.id;
     if (validators[name]) validateField(name);
   });
 
-  // Restablece los mensajes y el estado accesible después del reset nativo.
+  // Restablece los mensajes, estilos de borde y el estado accesible al limpiar el formulario
   form.addEventListener('reset', () => {
-    Object.keys(validators).forEach((name) => setError(name, ''));
-    successMessage.classList.add('hidden');
-    volumeWarning.classList.add('hidden');
+    Object.keys(validators).forEach((name) => {
+      setError(name, '');
+      controlsFor(name).forEach((control) => {
+        control.classList.remove('border-red-600', 'ring-red-600', 'border-emerald-600');
+        control.classList.add('border-ink/20');
+      });
+    });
+    if (successMessage) successMessage.classList.add('hidden');
+    if (volumeWarning) volumeWarning.classList.add('hidden');
     window.setTimeout(updateCommentsCount, 0);
   });
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-    successMessage.classList.add('hidden');
+    if (successMessage) successMessage.classList.add('hidden');
 
     if (!validateForm()) {
       form.querySelector('[aria-invalid="true"]')?.focus();
@@ -134,7 +167,9 @@ if (form) {
     }
 
     form.reset();
-    successMessage.classList.remove('hidden');
-    successMessage.focus();
+    if (successMessage) {
+      successMessage.classList.remove('hidden');
+      successMessage.focus();
+    }
   });
 }

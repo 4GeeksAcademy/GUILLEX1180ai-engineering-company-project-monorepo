@@ -12,7 +12,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN y Paleta Personalizada TrackFlow -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              forest: '#102d27',
+              leaf: '#22c55e',
+              paper: '#f8fafc',
+              ink: '#0f172a',
+              coral: '#f97316',
+              muted: '#64748b'
+            },
+            fontFamily: {
+              sans: ['DM Sans', 'sans-serif'],
+              display: ['Manrope', 'sans-serif']
+            }
+          }
+        }
+      }
+    </script>
     <link rel="stylesheet" href="/src/index.css">
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -128,13 +152,36 @@
             <article class="border-t border-ink/15 py-5"><h3 class="font-display text-lg font-bold">Operación binacional</h3><p class="mt-2 text-sm leading-6 text-muted">Infraestructura propia en Estados Unidos y España.</p></article>
             <article class="border-t border-ink/15 py-5"><h3 class="font-display text-lg font-bold">+130 profesionales</h3><p class="mt-2 text-sm leading-6 text-muted">Personas dedicadas a que tu logística funcione.</p></article>
             <article class="border-t border-ink/15 py-5"><h3 class="font-display text-lg font-bold">Tecnología propia</h3><p class="mt-2 text-sm leading-6 text-muted">Visibilidad total de tu inventario y tus envíos.</p></article>
-            <article class="border-t border-ink/15 py-5"><h3 class="font-display text-lg font-bold">Especialistas e-commerce</h3><p class="mt-2 text-sm leading-6 text-muted">Experiencia en moda, electrónica y cosmética.</p></article>
+            <article class="border-t border-ink/15 py-5"><h3 class="font-display text-lg font-bold">Especialización e-commerce</h3><p class="mt-2 text-sm leading-6 text-muted">Experiencia en moda, electrónica y cosmética.</p></article>
           </div>
         </div>
       </section>
 
       <section aria-labelledby="contact-title" class="bg-leaf" id="contacto">
-        <div class="mx-auto flex max-w-7xl flex-col gap-8 px-5 py-12 sm:px-8 md:flex-row md:items-center md:justify-between"><div><p class="text-sm font-bold uppercase tracking-[.14em] text-forest/80">Hablemos de tu operación</p><h2 class="mt-2 font-display text-3xl font-extrabold" id="contact-title">El siguiente paso empieza aquí.</h2></div><a class="w-fit rounded-full bg-forest px-6 py-3.5 font-bold text-white transition hover:bg-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-white" href="/application.html#application-form">Solicitar información <span aria-hidden="true">↗</span></a></div>
+        <div class="mx-auto max-w-7xl px-5 py-12 sm:px-8 md:py-16">
+          <div class="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+            <div class="max-w-xl">
+              <p class="text-sm font-bold uppercase tracking-[.14em] text-forest/80">Hablemos de tu operación</p>
+              <h2 class="mt-2 font-display text-3xl font-extrabold" id="contact-title">El siguiente paso empieza aquí.</h2>
+              <p class="mt-4 leading-7 text-forest/80">Cuéntanos qué mueves y cómo, y te propondremos una operación a medida para Estados Unidos, España o ambos mercados.</p>
+              <a class="mt-6 inline-block rounded-full bg-forest px-6 py-3.5 font-bold text-white transition hover:bg-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-white" href="/application.html#application-form">Solicitar información <span aria-hidden="true">↗</span></a>
+            </div>
+            <address class="grid gap-4 not-italic sm:grid-cols-3">
+              <a class="rounded-lg bg-forest p-5 text-white transition hover:bg-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-white" href="mailto:comercial@trackflow.com">
+                <p class="text-xs font-bold uppercase tracking-widest text-leaf">Email comercial</p>
+                <p class="mt-2 break-all font-semibold">comercial@trackflow.com</p>
+              </a>
+              <a class="rounded-lg bg-forest p-5 text-white transition hover:bg-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-white" href="tel:+12135550147">
+                <p class="text-xs font-bold uppercase tracking-widest text-leaf">Los Ángeles</p>
+                <p class="mt-2 font-semibold">+1 213 555 0147</p>
+              </a>
+              <a class="rounded-lg bg-forest p-5 text-white transition hover:bg-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-white" href="tel:+34976123456">
+                <p class="text-xs font-bold uppercase tracking-widest text-leaf">Zaragoza</p>
+                <p class="mt-2 font-semibold">+34 976 123 456</p>
+              </a>
+            </address>
+          </div>
+        </div>
       </section>
     </main>
 

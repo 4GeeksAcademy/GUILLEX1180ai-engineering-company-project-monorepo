@@ -9,6 +9,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN y Paleta Personalizada TrackFlow -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              forest: '#102d27',
+              leaf: '#22c55e',
+              paper: '#f8fafc',
+              ink: '#0f172a',
+              coral: '#f97316',
+              muted: '#64748b'
+            },
+            fontFamily: {
+              sans: ['DM Sans', 'sans-serif'],
+              display: ['Manrope', 'sans-serif']
+            }
+          }
+        }
+      }
+    </script>
     <link rel="stylesheet" href="/src/index.css">
     <script type="module" src="/validation.js"></script>
   </head>
@@ -43,7 +66,7 @@
             <div class="grid gap-5 sm:grid-cols-2">
             <div>
               <label class="mb-2 block text-sm font-semibold" for="company">Nombre de la empresa <span aria-hidden="true">*</span></label>
-              <input class="w-full rounded-lg border border-ink/20 bg-white px-4 py-3 outline-none transition focus:border-forest focus:ring-2 focus:ring-leaf/60" id="company" name="company" type="text" autocomplete="organization" required aria-describedby="company-error" aria-invalid="false">
+              <input class="w-full rounded-lg border border-ink/20 bg-white px-4 py-3 outline-none transition focus:border-forest focus:ring-2 focus:ring-leaf/60" id="company" name="company" type="text" minlength="2" autocomplete="organization" required aria-describedby="company-error" aria-invalid="false">
               <p class="mt-1.5 min-h-5 text-sm text-red-700" id="company-error" aria-live="polite"></p>
             </div>
             <div>
@@ -100,7 +123,7 @@
                 <option value="unsure">No estoy seguro</option>
               </select>
               <p class="mt-1.5 min-h-5 text-sm text-red-700" id="volume-error" aria-live="polite"></p>
-              <p class="mt-2 hidden rounded-lg border border-coral/40 bg-coral/10 px-4 py-3 text-sm leading-6 text-ink" id="volume-warning" role="status">Para volúmenes menores a 100 envíos mensuales, nuestros servicios podrían no ser la solución más eficiente. ¿Seguro que quieres continuar?</p>
+              <p class="mt-2 hidden rounded-lg border border-coral/40 bg-coral/10 px-4 py-3 text-sm leading-6 text-ink" id="volume-warning" role="status" aria-live="polite">Para volúmenes menores a 100 envíos mensuales, nuestros servicios podrían no ser la solución más eficiente. ¿Seguro que quieres continuar?</p>
             </div>
             </div>
           </fieldset>
