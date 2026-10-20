@@ -1,3 +1,7 @@
+---
+applyTo: "**"
+---
+
 # Regla: App Structure & Code — TrackFlow (Monorepo)
 
 > Regla de desarrollo del monorepo que define **dónde vive el código de aplicación**
@@ -5,9 +9,9 @@
 
 ## Alcance de aplicación
 
-- **Estado:** ⚠️ **Siempre activa para todo el proyecto** (aplica a todas las modificaciones de agentes).
-- **Aplicable a:** `./uis/**` y `/services/**`.
-- **Fuente de verdad:** mapa de capa de aplicación en `memory-bank/techContext.md` y briefing en `CONTEXT.es.md`.
+- **Estado:** siempre activa para todas las modificaciones del monorepo (`applyTo: '**'`).
+- **Aplicable especialmente a:** `./uis/**`, `./services/**`, las páginas existentes en la raíz y `src/`.
+- **Fuente de verdad:** `BRIEFING.md`; el mapa técnico se mantiene en `memory-bank/techContext.md`.
 
 ## Normas obligatorias
 
@@ -17,13 +21,13 @@ Respetar **estrictamente** la separación de la estructura oficial del monorepo:
 
 | Capa               | Ruta oficial       | Contenido                                            |
 | ------------------ | ------------------ | ---------------------------------------------------- |
-| **Sitio público**  | `./uis/website`    | Landing B2B pública + formulario de leads.           |
-| **App interna**    | `./uis/backoffice` | Backoffice con layout propio (separado del público). |
-| **Backend / APIs** | `/services`        | APIs y microservicios.                               |
+| **Contenedor frontend** | `./uis`             | Contenedor principal de los proyectos frontend de la empresa. |
+| **Sitio público**       | `./uis/website`     | Sitio corporativo público en `/`, alineado en diseño, marca, tono y textos con `BRIEFING.md`. |
+| **App interna**         | `./uis/backoffice`  | Administración operativa interna en `/`, con layout propio aislado del sitio público. |
+| **Backend / APIs**      | `./services`        | Contenedor principal de todas las APIs, microservicios y servicios backend. |
 
-> ⚠️ **Prohibido** crear un segundo árbol de directorios o carpetas paralelas para frontend, apps
-> o backend (`/apps`, `/frontend`, `/backend`, `/src/website`, etc.). Toda interfaz vive en `./uis/**`
-> y todo backend en `/services`. Cualquier desviación requiere confirmación explícita del Tech Lead.
+> **ESTÁ ESTRICTAMENTE PROHIBIDO** crear carpetas paralelas (`/frontend`, `/backend`, `/apps`, `/api`) o inventar un árbol alternativo. Todo el código de aplicación nuevo vive únicamente en `./uis/website`, `./uis/backoffice` y `./services`, de acuerdo con su responsabilidad. El sitio existente sigue en la raíz hasta migrarlo; no duplicarlo.
+> Si una ruta oficial existe o contiene código inicial, conservarlo y respetar su README; no crear otra estructura para reemplazarlo.
 
 ### 2. Estilos — Tailwind CSS exclusivo
 
@@ -38,7 +42,7 @@ Respetar **estrictamente** la separación de la estructura oficial del monorepo:
 
 ### 4. Mensajes de validación
 
-- Los mensajes de error mostrados al usuario **deben ser idénticos** a los especificados en `CONTEXT.es.md` (tabla de campos + mensajes de error). No se admite parafrasear.
+- Los mensajes de error mostrados al usuario **deben ser idénticos** a los especificados en `BRIEFING.md` (tabla de campos + mensajes de error). No se admite parafrasear.
 
 ### 5. Comentarios explicativos en código clave
 
@@ -50,7 +54,7 @@ Respetar **estrictamente** la separación de la estructura oficial del monorepo:
 - Semántica HTML5 correcta (header, nav, main, section, footer) en la landing.
 - Marcado **Schema.org `Organization`** (JSON-LD) presente en la landing.
 - Sin `console.log` en producción (solo en demos/console).
-- Respetar los README oficiales de cada ruta (`./uis/README.md`, `/services/README.md`) antes de escribir código de aplicación.
+- Antes de escribir código de aplicación, leer y respetar `./uis/README.md`, los README de `./uis/website` y `./uis/backoffice` si existen, `./services/README.md` y el README de cada servicio.
 
 ## Verificación de la regla
 
@@ -58,5 +62,5 @@ Antes de commitear (Paso 3 de `AGENTS.md`):
 
 - [ ] `npx tsc --noEmit` sin errores.
 - [ ] `npm run build` sin errores.
-- [ ] Inspección visual/manual de validaciones y accesibilidad en `./uis/**`.
-- [ ] Confirmar (Paso 2 de `AGENTS.md`) que no existen carpetas paralelas fuera de `./uis/**` y `/services`.
+- [ ] Inspección visual/manual de validaciones y accesibilidad en la ruta actual del sitio (raíz hasta completar migración; después `./uis/website`).
+- [ ] Confirmar (Paso 2 de `AGENTS.md`) que no se crearon árboles paralelos y que el código nuevo está únicamente en `./uis/website`, `./uis/backoffice` o `./services`.

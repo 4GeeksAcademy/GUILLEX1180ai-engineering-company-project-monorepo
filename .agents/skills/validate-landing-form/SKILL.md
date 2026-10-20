@@ -1,6 +1,6 @@
 ---
 name: validate-landing-form
-description: Validar que la landing page B2B y el formulario de contacto de TrackFlow cumplen al 100% con los requerimientos de CONTEXT.es.md.
+description: Validar que la landing page B2B y el formulario de contacto de TrackFlow cumplen los requisitos de BRIEFING.md.
 version: 1.0.0
 tags: [trackflow, landing, form, validation, qa, schema-org]
 ---
@@ -9,21 +9,20 @@ tags: [trackflow, landing, form, validation, qa, schema-org]
 
 ## Objetivo Único
 
-**Validar de forma automatizada** que el **sitio web** y el **formulario** en `./uis/website`
-cumplen con **todos los requerimientos** de `CONTEXT.es.md`.
-La skill es **pass/fail**, no produce cambios de código: solo evalúa y reporta.
+**Validar** que el **sitio web** y el **formulario** cumplen con los requisitos de `BRIEFING.md`.
+La skill es **pass/fail**, no produce cambios de código: solo evalúa y reporta. El sitio actual está en la raíz (`index.html`, `application.html`, `validation.js`); tras la migración, inspeccionar `./uis/website`.
 
 ## Inputs Documentados
 
 | Input | Descripción | Fuente |
 |---|---|---|
-| Archivos de la aplicación | Código fuente del sitio público + formulario | `./uis/website` |
-| Matriz de validación y mensajes de error | Campos del formulario, mensajes de error y validaciones | `CONTEXT.es.md` (tabla "Campos del formulario", "Mensajes de error esperados", "Validaciones específicas") |
+| Archivos de la aplicación | Código fuente del sitio público + formulario | Raíz actual; `./uis/website` después de la migración |
+| Matriz de validación y mensajes de error | Campos del formulario, mensajes de error y validaciones | `BRIEFING.md` (campos, validaciones, mensajes y advertencia) |
 
 ## Pasos de ejecución
 
-1. **Leer la fuente de verdad**: `CONTEXT.es.md` (secciones de formulario y validaciones).
-2. **Inspeccionar el código fuente**: sitio y formulario en `./uis/website`.
+1. **Leer la fuente de verdad**: `BRIEFING.md` (secciones de formulario y validaciones).
+2. **Inspeccionar el código fuente**: `index.html`, `application.html`, `validation.js` y los recursos que importen; después de la migración, revisar `./uis/website`.
 3. **Evaluar cada criterio de aceptación** (abajo) y registrar ✔/✘ por criterio.
 4. **Reportar**: devolver un informe detallado con el resultado por criterio.
 
@@ -54,7 +53,7 @@ La skill es **pass/fail**, no produce cambios de código: solo evalúa y reporta
 ✔ Cada campo tiene su tipo HTML (`text`/`email`/`tel`/`url`/`select`/`textarea`/`checkbox`/`radio`), asociado a su `<label>`.
 
 ### C3 — Mensajes de error exactos
-✔ Los mensajes de error del formulario son **idénticos** a la tabla de `CONTEXT.es.md`,
+✔ Los mensajes de error del formulario son **idénticos** a la tabla de `BRIEFING.md`,
 incluidos:
 - `El nombre de la empresa debe tener al menos 2 caracteres`
 - `Ingresa nombre y apellido del contacto`
@@ -99,6 +98,6 @@ validate-landing-form — Resultado
 
 ## Alcance / No aplica
 
-- **Aplicable a:** `./uis/website` (sitio público + formulario).
+- **Aplicable a:** la ubicación actual del sitio en la raíz y, una vez migrado, `./uis/website` (sitio público + formulario).
 - **No modifica código**: la skill es de verificación (QA). Los cambios los aplica el agente ejecutor tras el reporte.
 - **Reglas relacionadas:** `.agents/rules/app-structure-and-code.md` (estructura de aplicación y convenciones de código).

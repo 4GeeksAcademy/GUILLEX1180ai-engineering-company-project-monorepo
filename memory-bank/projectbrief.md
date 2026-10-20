@@ -1,7 +1,7 @@
 # Project Brief — TrackFlow
 
 > Documento raíz del banco de memoria. Define **qué** construye TrackFlow y **por qué**.
-> Fuente de verdad: [`CONTEXT.es.md`](../CONTEXT.es.md).
+> Fuente de verdad de negocio: [`BRIEFING.md`](../BRIEFING.md).
 
 ## Negocio
 
@@ -13,6 +13,8 @@
 - **Almacenes propios:** Los Ángeles (EE. UU.) y Zaragoza (España).
 - **Clientes:** marcas medianas de e-commerce en moda, electrónica y cosmética que venden en línea.
 
+TrackFlow opera almacenes en Los Ángeles y Zaragoza y ofrece gestión de almacenes, entregas de última milla y logística inversa (devoluciones, inspección y reacondicionamiento).
+
 ## Servicios
 
 TrackFlow ofrece **tres servicios** de logística para e-commerce:
@@ -23,23 +25,20 @@ TrackFlow ofrece **tres servicios** de logística para e-commerce:
 
 ## Problema a Resolver
 
-El departamento **TrackFlow Tech** (reporta al CTO Andrés Kim) debe resolver la situación actual de la compañía:
-
-- **Sistemas SGA desconectados** entre los almacenes de EE. UU. y España.
-- **Procesos manuales de devoluciones** (logística inversa poco automatizada).
-- **Falta de visibilidad binacional** en tiempo real del inventario.
-- **Un sitio web desactualizado**: no refleja que la empresa opera en dos países, no explica los servicios y no canaliza leads de forma estructurada.
+El sitio web corporativo está desactualizado: no explica la operación en Estados Unidos y España ni los tres servicios, y no cualifica de forma estructurada a las empresas interesadas. El Director Comercial, Miguel Torres, necesita presentar TrackFlow y recibir solicitudes de empresas que buscan externalizar su logística.
 
 ## Objetivo
 
-Construir la **infraestructura del monorepo** e implementar en `./uis/website` el **sitio público B2B** y el **formulario de cualificación de leads** (solicitud de información), con:
+Implementar el **sitio público B2B** y el **formulario de cualificación de leads** (solicitud de información), con destino oficial en `./uis/website`, con:
 
 - Validaciones estrictas por campo (mensajes de error exactos del contexto).
 - Advertencia de eficiencia para **volúmenes bajos (<100 envíos/mes)**: _"Para volúmenes menores a 100 envíos mensuales, nuestros servicios podrían no ser la solución más eficiente. ¿Seguro que quieres continuar?"_
 - Marcado **Schema.org** (`Organization`) y diseño responsive/SEO.
 
+El formulario debe capturar 12 datos: empresa, contacto, email, teléfono, sitio web opcional, país principal, tipo de producto, volumen mensual, servicios de interés, relación actual con otro 3PL, comentarios opcionales y aceptación de privacidad.
+
 ## Restricciones del Hito 1
 
 - El sitio está dirigido a **empresas e-commerce** que buscan externalizar logística (no a consumidores finales).
 - Capturar 12 campos de cualificación (datos empresa, tipo de producto, volumen mensual, países, servicios de interés, 3PL actual).
-- Soporte multiidioma opcional; el idioma base es una única experiencia completa.
+- Soporte multiidioma opcional; el idioma base es una única experiencia completa. El sitio está dirigido a empresas de e-commerce, no a consumidores que quieren rastrear paquetes o tramitar devoluciones.

@@ -1,39 +1,40 @@
 # Progress — TrackFlow
 
-> Estado actual y próximos pasos del proyecto. **Debe actualizarse en cada sesión**
+> Estado actual y próximos pasos del proyecto. **Debe actualizarse en cada cambio relevante**
 > (ver protocolo obligatorio en [`AGENTS.md`](../AGENTS.md)).
 
 ## Estado actual
 
-**✅ Completado: Configuración de Infraestructura de Agentes y Setup del Monorepo (Hito 0/1).**
+**✅ Setup de infraestructura de agentes completado (2026-10-20).** El briefing canónico es `BRIEFING.md`; la aplicación aún conserva partes en la raíz y su migración oficial está pendiente.
 
 - [x] Inicializado el banco de memoria (`./memory-bank/`): `projectbrief.md`, `techContext.md`, `progress.md`.
 - [x] Protocolo de agentes (`./AGENTS.md`) y estructura `.agents/` (reglas + skills).
-- [x] **Mapeo de Capa de Aplicación** documentado en `techContext.md` (`./uis/website`, `./uis/backoffice`, `/services`).
-- [x] Regla de aplicación `.agents/rules/app-structure-and-code.md` (aplicable a `./uis/**` y `/services/**`).
+- [x] **Mapeo de Capa de Aplicación** documentado en `techContext.md` (`./uis/website`, `./uis/backoffice`, `./services`).
+- [x] Regla de aplicación `.agents/rules/app-structure-and-code.md` (aplicable a `./uis/**` y `./services/**`).
 - [x] Skill de validación `.agents/skills/validate-landing-form/SKILL.md`.
 - [x] Capa de dominio TypeScript (`src/types/models.ts`, `src/utils/*`) validada con `npx tsc --noEmit`.
-- [x] Hito 2 (parcialmente): interfaz de pruebas `console.html` + `src/interactive-demo.ts`.
-- [x] Sitio estático B2B (Hito 1) construido en la raíz: `index.html`, `application.html`, `validation.js`.
+- [x] Hito 2 (parcial): modelos y utilidades TypeScript, demo de consola `console.html` + `src/interactive-demo.ts`.
+- [x] Sitio estático B2B (Hito 1) construido en la raíz: `index.html`, `application.html`, `validation.js`; la migración a `uis/website` sigue pendiente.
+- [ ] Hito 3: alcance no especificado en `BRIEFING.md`; no se atribuyen entregables hasta recibir su definición oficial.
 
-## Hito 1 — Sitio Web Público (objetivo actual del banco de memoria)
+## Hito 1 — Sitio Web Público
 
 - [x] Landing page B2B (Header, Hero, Servicios, Cobertura, Beneficios, Contacto/Footer).
 - [x] Formulario de solicitud de información con los 12 campos y validaciones.
-- [x] Mensajes de error exactos de `CONTEXT.es.md`.
+- [x] Mensajes de error exactos de `BRIEFING.md`.
 - [x] Advertencia de volumen "0-100 envíos/mes".
 - [x] Marcado Schema.org `Organization` en la landing.
-- [ ] **Migración a estructura oficial:** mover el sitio público a `./uis/website` (actualmente en la raíz).
+- [ ] **Migración a estructura oficial:** mover el sitio público a `./uis/website` (actualmente en la raíz); revisar antes `uis/README.md`.
 - [ ] **Admin/Backoffice:** inicializar `./uis/backoffice` (hito futuro).
-- [ ] **APIs:** crear microservicios en `/services` (hito futuro).
+- [ ] **APIs:** crear servicios backend en `./services` (hito futuro).
 
-## Próximos pasos inmediatos
+## Próximos pasos
 
-1. **Desarrollo UI y validaciones de formulario en `./uis/website`** (landing + formulario) respetando el README de `uis/`.
-2. Implementar las validaciones en `./uis/website` con los mensajes exactos del briefing.
-3. Integración del marcado Schema.org `Organization` (JSON-LD).
-4. Pruebas de envío del formulario (simulación) y verificación con la skill `validate-landing-form`.
-5. **Despliegue en línea:** configurado workflow de GitHub Pages en `.github/workflows/deploy.yml` + `base: './'` en `vite.config.js`; activar Pages en `Settings → Pages` y hacer push a `main` para publicar.
+1. Validar landing, formulario y JSON-LD contra `BRIEFING.md` usando `.agents/skills/validate-landing-form/SKILL.md`; registrar las comprobaciones que realmente se ejecuten.
+2. Migrar el sitio existente a `./uis/website`, respetando el README de `uis/` y evitando duplicar aplicaciones.
+3. Completar o definir el alcance del Hito 2 y sus pruebas; el estado actual es una demo de utilidades, no un producto operacional.
+4. Solicitar la definición oficial del Hito 3 antes de planificarlo.
+5. En hitos posteriores, implementar backoffice y APIs solo en `./uis/backoffice` y `./services`, respectivamente, después de revisar sus README.
 
 ## Registro de avances
 
