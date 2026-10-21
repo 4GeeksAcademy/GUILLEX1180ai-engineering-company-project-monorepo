@@ -74,7 +74,7 @@ antes de editarlos:
 | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
 | `BRIEFING.md` y datos operativos sensibles                                                                               | Fuente de verdad / seguridad; requieren confirmación humana explícita                  |
 | `package.json`, `pnpm-workspace.yaml`, `tsconfig.json`, `vite.config.js`, Tailwind/PostCSS, Dockerfiles y workflows raíz | Afectan a todo el monorepo                                                             |
-| READMEs principales de la plantilla en `./uis/` y `./services/`                                                         | Documentación oficial de estructura                                                    |
+| READMEs principales de la plantilla en `./uis/` y `./services/`                                                          | Documentación oficial de estructura                                                    |
 | Datos de clientes, `.env`, credenciales y datasets con información identificable                                         | Privacidad y seguridad                                                                 |
 | Refactorizaciones amplias de `./memory-bank/*`                                                                           | Requieren revisión previa; las actualizaciones puntuales de estado son parte del flujo |
 

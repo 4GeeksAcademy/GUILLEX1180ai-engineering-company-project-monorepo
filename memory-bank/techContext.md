@@ -7,6 +7,7 @@
 
 - **Sitio web B2B actual:** Vite multipágina con HTML5, Tailwind CSS y JavaScript vanilla; landing/formulario en la raíz (`index.html`, `application.html`, `validation.js`). La ubicación destino es `./uis/website`; la migración está pendiente.
 - **Capa de dominio/demos:** TypeScript en `src/types/` y `src/utils/`; `console.html` y `src/interactive-demo.ts` exponen una demo interactiva parcial del Hito 2.
+- **AUTH-01 (excepción temporal solicitada):** FastAPI + TinyDB en `src/`, con modelos Pydantic y capa CRUD en `src/services.py`; usa `python-jose`, Passlib/bcrypt y `python-dotenv`. El usuario persistido no contiene campos de perfil. La ruta backend oficial sigue siendo `./services`; migrar estos módulos antes de ampliar la API.
 - **Markup estructurado:** Schema.org tipo `Organization` (JSON-LD) en la landing page.
 - **Validación del formulario:** atributos HTML5 + validación custom en `validation.js`; los mensajes deben coincidir exactamente con `BRIEFING.md`.
 - **Optimización:** responsive, accesible (ARIA, contraste, foco visible) y SEO (meta tags + Open Graph + Schema.org).
@@ -29,12 +30,12 @@ El monorepo sigue la plantilla oficial de 4Geeks Academy para el proyecto cross-
 
 Capa oficial de aplicación del monorepo. **Toda** interfaz/servicio de TrackFlow vive exclusivamente aquí:
 
-| Ruta oficial | Responsabilidad |
-| --- | --- |
-| `./uis` | Contenedor principal de todos los proyectos frontend de la empresa, de acuerdo con `uis/README.md`. |
-| `./uis/website` | Sitio web corporativo público, servido en la ruta `/`. Todo el diseño, marca, tono y textos deben estar 100% alineados con `BRIEFING.md`. |
-| `./uis/backoffice` | Aplicación interna de administración, servida en la ruta `/` de su propia app, con layout aislado del sitio público y destinada a la gestión operativa del negocio. |
-| `./services` | Contenedor principal de todas las APIs, microservicios y servicios backend; cada servicio debe tener su propia subcarpeta y documentación técnica y funcional según `services/README.md`. |
+| Ruta oficial       | Responsabilidad                                                                                                                                                                           |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `./uis`            | Contenedor principal de todos los proyectos frontend de la empresa, de acuerdo con `uis/README.md`.                                                                                       |
+| `./uis/website`    | Sitio web corporativo público, servido en la ruta `/`. Todo el diseño, marca, tono y textos deben estar 100% alineados con `BRIEFING.md`.                                                 |
+| `./uis/backoffice` | Aplicación interna de administración, servida en la ruta `/` de su propia app, con layout aislado del sitio público y destinada a la gestión operativa del negocio.                       |
+| `./services`       | Contenedor principal de todas las APIs, microservicios y servicios backend; cada servicio debe tener su propia subcarpeta y documentación técnica y funcional según `services/README.md`. |
 
 **ESTÁ ESTRICTAMENTE PROHIBIDO** crear carpetas paralelas (`/frontend`, `/backend`, `/apps`, `/api`) o inventar un árbol alternativo. Todo código de aplicación nuevo debe vivir únicamente en las rutas oficiales anteriores. Si ya existe código inicial en una ruta oficial, mantenerlo coherente con su README y no duplicarlo en otro árbol.
 

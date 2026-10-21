@@ -19,12 +19,12 @@ applyTo: "**"
 
 Respetar **estrictamente** la separación de la estructura oficial del monorepo:
 
-| Capa               | Ruta oficial       | Contenido                                            |
-| ------------------ | ------------------ | ---------------------------------------------------- |
-| **Contenedor frontend** | `./uis`             | Contenedor principal de los proyectos frontend de la empresa. |
-| **Sitio público**       | `./uis/website`     | Sitio corporativo público en `/`, alineado en diseño, marca, tono y textos con `BRIEFING.md`. |
-| **App interna**         | `./uis/backoffice`  | Administración operativa interna en `/`, con layout propio aislado del sitio público. |
-| **Backend / APIs**      | `./services`        | Contenedor principal de todas las APIs, microservicios y servicios backend. |
+| Capa                    | Ruta oficial       | Contenido                                                                                     |
+| ----------------------- | ------------------ | --------------------------------------------------------------------------------------------- |
+| **Contenedor frontend** | `./uis`            | Contenedor principal de los proyectos frontend de la empresa.                                 |
+| **Sitio público**       | `./uis/website`    | Sitio corporativo público en `/`, alineado en diseño, marca, tono y textos con `BRIEFING.md`. |
+| **App interna**         | `./uis/backoffice` | Administración operativa interna en `/`, con layout propio aislado del sitio público.         |
+| **Backend / APIs**      | `./services`       | Contenedor principal de todas las APIs, microservicios y servicios backend.                   |
 
 > **ESTÁ ESTRICTAMENTE PROHIBIDO** crear carpetas paralelas (`/frontend`, `/backend`, `/apps`, `/api`) o inventar un árbol alternativo. Todo el código de aplicación nuevo vive únicamente en `./uis/website`, `./uis/backoffice` y `./services`, de acuerdo con su responsabilidad. El sitio existente sigue en la raíz hasta migrarlo; no duplicarlo.
 > Si una ruta oficial existe o contiene código inicial, conservarlo y respetar su README; no crear otra estructura para reemplazarlo.

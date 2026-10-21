@@ -16,6 +16,10 @@
 - [x] Hito 2 (parcial): modelos y utilidades TypeScript, demo de consola `console.html` + `src/interactive-demo.ts`.
 - [x] Sitio estático B2B (Hito 1) construido en la raíz: `index.html`, `application.html`, `validation.js`; la migración a `uis/website` sigue pendiente.
 - [ ] Hito 3: alcance no especificado en `BRIEFING.md`; no se atribuyen entregables hasta recibir su definición oficial.
+- [x] AUTH-01: autenticación JWT, modelos Pydantic, capa CRUD (`src/services.py`) y routers FastAPI sobre TinyDB implementados en `src/` por solicitud explícita. `User` persiste solo `id`, `email`, `hashed_password`, `is_active`, `role` y `created_at`; los datos personales viven en `profiles`. Es una excepción temporal a `./services`; migrar allí antes de ampliar el backend.
+- [x] Seguridad de rutas: `GET/PUT /profiles/me` están protegidas y `/users` exige autenticación; listado, lectura y borrado impiden el acceso a cuentas ajenas sin rol admin. No existen cinco rutas adicionales de inventario/pedidos/productos en el repo; solo están definidas las dos rutas de perfiles fuera de `/users` y `/auth`.
+- [x] Auditoría reproducible AUTH-01 en `scripts/auth01_audit.py`: última ejecución, 12 verificaciones PASS y 0 FAIL; queda BLOCKED el criterio de cinco rutas externas porque solo existen `GET/PUT /profiles/me` fuera de `/users` y `/auth`.
+- [x] Suite pytest en `tests/test_auth_validation.py`: última ejecución `10 passed, 1 failed`; la única falla es el criterio de cinco rutas externas, ya que solo existen `GET/PUT /profiles/me` fuera de `/users` y `/auth`.
 
 ## Hito 1 — Sitio Web Público
 
@@ -35,6 +39,7 @@
 3. Completar o definir el alcance del Hito 2 y sus pruebas; el estado actual es una demo de utilidades, no un producto operacional.
 4. Solicitar la definición oficial del Hito 3 antes de planificarlo.
 5. En hitos posteriores, implementar backoffice y APIs solo en `./uis/backoffice` y `./services`, respectivamente, después de revisar sus README.
+6. Migrar los módulos AUTH-01 de `src/` a `./services` cuando se autorice la normalización de la estructura.
 
 ## Registro de avances
 
