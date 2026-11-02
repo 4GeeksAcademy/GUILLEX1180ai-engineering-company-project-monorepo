@@ -6,6 +6,18 @@ They never print JWTs, passwords, hashes, or the contents of the local .env file
 """
 
 from __future__ import annotations
+from src.security import create_access_token
+from src.schemas import UserRole, UserUpdate
+from src.main import app
+from src.database import (
+    DB_LOCK,
+    DB_PATH,
+    UserQuery,
+    db,
+    profiles_table,
+    users_table,
+)
+from src.config import ACCESS_TOKEN_EXPIRE_MINUTES, ALGORITHM, SECRET_KEY
 
 import json
 import os
@@ -25,19 +37,6 @@ from pydantic import ValidationError
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
-
-from src.config import ACCESS_TOKEN_EXPIRE_MINUTES, ALGORITHM, SECRET_KEY
-from src.database import (
-    DB_LOCK,
-    DB_PATH,
-    UserQuery,
-    db,
-    profiles_table,
-    users_table,
-)
-from src.main import app
-from src.schemas import UserRole, UserUpdate
-from src.security import create_access_token
 
 
 @pytest.fixture(scope="module")

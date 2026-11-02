@@ -1,0 +1,28 @@
+Metric,Value
+Filename,sample_incidents.csv
+Total incidents,10
+Open (open + in_progress),6
+Closed (resolved + closed),4
+
+--- By status ---
+  closed,2
+  in_progress,2
+  open,4
+  resolved,2
+
+--- By category ---
+  calidad,1
+  carriers,1
+  daños,1
+  documentación,1
+  inventario,1
+  logística inversa,2
+  operaciones,1
+  retrasos,1
+  seguimiento,1
+
+--- By priority ---
+  critical,2
+  high,3
+  low,2
+  medium,3

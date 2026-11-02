@@ -26,7 +26,12 @@ def get_current_user(
     )
 
     try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        payload = jwt.decode(
+            token, SECRET_KEY, algorithms=[ALGORITHM],
+            options={"require_exp": True},
+        )
+        if payload.get("type", "access") != "access":
+            raise credentials_error
         subject = payload.get("sub")
         if not isinstance(subject, str):
             raise credentials_error

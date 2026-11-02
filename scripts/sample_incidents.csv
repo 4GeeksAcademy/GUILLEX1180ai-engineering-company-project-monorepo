@@ -1,0 +1,11 @@
+id,title,category,priority,status,assigned_to,created_at,resolved_at
+1,Paquete dañado en tránsito,Daños,critical,open,juan.perez,2026-10-01,
+2,Retraso en entrega zona norte,Retrasos,high,in_progress,maria.garcia,2026-10-02,
+3,Devolución no procesada,Logística inversa,medium,open,carlos.lopez,2026-10-03,
+4,Error en etiqueta de envío,Documentación,low,resolved,ana.martinez,2026-10-01,2026-10-05
+5,Producto equivocado recibido,Calidad,high,closed,luis.torres,2026-09-28,2026-10-02
+6,Falta de stock en almacén,Inventario,medium,open,sofia.ramirez,2026-10-04,
+7,Problema con carrier UPS,Carriers,high,open,juan.perez,2026-10-05,
+8,Solicitud de devolución urgente,Logística inversa,critical,in_progress,maria.garcia,2026-10-06,
+9,Actualización de tracking no llega,Seguimiento,low,resolved,carlos.lopez,2026-10-01,2026-10-07
+10,Incidente en puerta de carga,Operaciones,medium,closed,ana.martinez,2026-09-30,2026-10-03

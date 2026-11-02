@@ -1,0 +1,16 @@
+id,title,category,priority,status,assigned_to,created_at
+INC-001,Fallo en login de usuarios,Autenticación,high,open,juan.perez,2025-10-01T10:30:00
+INC-002,Página de inicio lenta,Rendimiento,medium,open,maria.garcia,2025-10-02T14:15:00
+INC-003,Error 500 en checkout,Compras,critical,closed,carlos.lopez,2025-10-03T09:00:00
+INC-004,Enlace de recuperación expirado,Autenticación,low,closed,ana.martinez,2025-10-04T11:45:00
+INC-005,Iconos no se muestran correctamente,UI/UX,low,open,luis.ramirez,2025-10-05T08:20:00
+INC-006,Base de datos de productos caída,Infraestructura,critical,open,rocio.fernandez,2025-10-06T16:00:00
+INC-007,Traducción faltante en dashboard,Contenido,medium,open,pedro.sanchez,2025-10-07T13:10:00
+INC-008,Notificaciones push duplicadas,Notificaciones,medium,closed,laura.diaz,2025-10-08T09:30:00
+INC-009,Búsqueda no devuelve resultados,Búsqueda,high,open,sofia.morales,2025-10-09T15:45:00
+INC-010,PDF de factura no se genera,Reportes,high,closed,diego.torres,2025-10-10T10:00:00
+INC-011,Timeout en carga de imágenes,UI/UX,critical,open,claudia.rivera,2025-10-11T12:20:00
+INC-012,Menú responsive no funciona en mobile,UI/UX,medium,open,jorge.medina,2025-10-12T17:30:00
+INC-013,Cálculo de impuestos incorrecto,Compras,critical,closed,andrea.vargas,2025-10-13T08:15:00
+INC-014,Correos de confirmación no llegan,Notificaciones,high,open,pablo.castro,2025-10-14T14:00:00
+INC-015,Exportación a Excel daña formato,Reportes,low,open,valentina.ortiz,2025-10-15T11:50:00

@@ -31,3 +31,23 @@ except ValueError as error:
 if ACCESS_TOKEN_EXPIRE_MINUTES <= 0:
     raise RuntimeError(
         "ACCESS_TOKEN_EXPIRE_MINUTES must be a positive integer.")
+
+RESEND_API_KEY = os.getenv("RESEND_API_KEY", "").strip()
+EMAIL_FROM = os.getenv("EMAIL_FROM", "onboarding@resend.dev").strip()
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3001").strip().rstrip("/")
+
+try:
+    RESET_TOKEN_EXPIRE_MINUTES = int(
+        os.getenv("RESET_TOKEN_EXPIRE_MINUTES", "30").strip()
+    )
+except ValueError as error:
+    raise RuntimeError(
+        "RESET_TOKEN_EXPIRE_MINUTES must be between 15 and 60.") from error
+
+if not 15 <= RESET_TOKEN_EXPIRE_MINUTES <= 60:
+    raise RuntimeError("RESET_TOKEN_EXPIRE_MINUTES must be between 15 and 60.")
+
+if not EMAIL_FROM:
+    raise RuntimeError("EMAIL_FROM must not be empty.")
+if not FRONTEND_URL.startswith(("http://", "https://")):
+    raise RuntimeError("FRONTEND_URL must be an absolute http(s) URL.")
